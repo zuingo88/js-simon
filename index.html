@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zuingo88 - js simon</title>
+    <style>
+        body {
+            background-color: darkslateblue;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            color: white;
+            background-color: teal;
+            border: solid 2px black;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .pi {
+            transition: all 0.5s;
+        }
+
+        .pi:hover {
+            scale: 2;
+        }
+
+        .red {
+            color: red;
+            background-color: beige;
+        }
+
+        .green {
+            color: green;
+            background-color: beige;
+        }
+
+        #myButton {
+            padding: 10px;
+            border: solid 3px white;
+            border-radius: 8px;
+            color: black;
+            background-color: coral;
+        }
+
+        #myButton:hover {
+            border: solid 3px coral;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="container">
+        <h1 id="titolo">ciao mondo</h1>
+        <p id="p1" class="pi">tanti saluti</p>
+        <p id="p2" class="pi">tanti saluti</p>
+        <p id="p3" class="pi">tanti saluti</p>
+        <input type="button" value="CLICK ME" id="myButton">
+    </div>
+
+    <script>
+
+        //Un alert() espone 5 numeri generati casualmente.
+            
+        //Da li parte un timer di 30 secondi.
+        //Dopo 30 secondi l'utente deve inserire, uno alla volta, i numeri che ha visto precedentemente, tramite il prompt().
+        //Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
+
+        var arrRnd = [];
+        var arrPlayerNum = [];
+        var winnerNum = [];
+
+        function getRnd(value) {
+
+            while (arrRnd.length < value) {
+
+                var rnd = Math.floor(Math.random() * (100 - 1)) + 1;
+
+                if (!arrRnd.includes(rnd)) {
+                    arrRnd.push(rnd);
+                }
+            }
+            return alert(arrRnd);
+        };
+        
+        getRnd(5);
+        console.log(arrRnd);//ho l'alert con i 5 valori generati e pushati nel'array + stampa un console
+
+        //pausa 30 secondi
+
+        function playerNumbers() {
+
+            while (arrPlayerNum.length < 5) {
+
+                var playerNum = parseInt(prompt('Inserisci uno dei numeri che hai memorizzato'));
+                if (!arrPlayerNum.includes(playerNum)) {
+                    arrPlayerNum.push(playerNum);
+
+                    if (arrRnd.includes(playerNum)) {
+                        winnerNum.push(playerNum);
+                    }
+                }
+                
+            }
+            console.log(arrPlayerNum);
+            console.log(winnerNum);
+        };
+
+        function endGame() {
+            alert('Hai indovinato ' + winnerNum.length + ' numeri! (' + winnerNum + ')');
+        };
+        
+        setTimeout(playerNumbers, 3000); //inserisco i numeri. quelli contenuti anche in arrRnd vanno anche in winnerNum
+
+        setTimeout(endGame, 5000); //ho la quantità di numeri indovinati e quali 
+
+    </script>
+
+</body>
+
+</html>
