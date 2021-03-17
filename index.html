@@ -77,53 +77,59 @@
         //Dopo 30 secondi l'utente deve inserire, uno alla volta, i numeri che ha visto precedentemente, tramite il prompt().
         //Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
 
-        var arrRnd = [];
-        var arrPlayerNum = [];
-        var winnerNum = [];
+        function esercizio() {
 
-        function getRnd(value) {
+            var arrRnd = [];
+            var arrPlayerNum = [];
+            var winnerNum = [];
 
-            while (arrRnd.length < value) {
+            function getRnd(value) {
 
-                var rnd = Math.floor(Math.random() * (100 - 1)) + 1;
+                while (arrRnd.length < value) {
 
-                if (!arrRnd.includes(rnd)) {
-                    arrRnd.push(rnd);
-                }
-            }
-            return alert(arrRnd);
-        };
-        
-        getRnd(5);
-        console.log(arrRnd);//ho l'alert con i 5 valori generati e pushati nel'array + stampa un console
+                    var rnd = Math.floor(Math.random() * (100 - 1)) + 1;
 
-        //pausa 30 secondi
-
-        function playerNumbers() {
-
-            while (arrPlayerNum.length < 5) {
-
-                var playerNum = parseInt(prompt('Inserisci uno dei numeri che hai memorizzato'));
-                if (!arrPlayerNum.includes(playerNum)) {
-                    arrPlayerNum.push(playerNum);
-
-                    if (arrRnd.includes(playerNum)) {
-                        winnerNum.push(playerNum);
+                    if (!arrRnd.includes(rnd)) {
+                        arrRnd.push(rnd);
                     }
                 }
-                
-            }
-            console.log(arrPlayerNum);
-            console.log(winnerNum);
-        };
+                return alert(arrRnd);
+            };
 
-        function endGame() {
-            alert('Hai indovinato ' + winnerNum.length + ' numeri! (' + winnerNum + ')');
-        };
-        
-        setTimeout(playerNumbers, 3000); //inserisco i numeri. quelli contenuti anche in arrRnd vanno anche in winnerNum
+            getRnd(5);
+            console.log(arrRnd);//ho l'alert con i 5 valori generati e pushati nel'array + stampa un console
 
-        setTimeout(endGame, 5000); //ho la quantità di numeri indovinati e quali 
+            //pausa 30 secondi
+
+            function playerNumbers() {
+
+                while (arrPlayerNum.length < 5) {
+
+                    var playerNum = parseInt(prompt('Inserisci uno dei numeri che hai memorizzato'));
+                    if (!arrPlayerNum.includes(playerNum)) {
+                        arrPlayerNum.push(playerNum);
+
+                        if (arrRnd.includes(playerNum)) {
+                            winnerNum.push(playerNum);
+                        }
+                    }
+
+                }
+                console.log(arrPlayerNum);
+                console.log(winnerNum);
+            };
+
+            function endGame() {
+                alert('Hai indovinato ' + winnerNum.length + ' numeri! (' + winnerNum + ')');
+            };
+
+            setTimeout(playerNumbers, 3000); //inserisco i numeri. quelli contenuti anche in arrRnd vanno anche in winnerNum
+
+            setTimeout(endGame, 5000); //ho la quantità di numeri indovinati e quali 
+
+        }
+
+        //esercizio();
 
     </script>
 
