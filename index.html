@@ -117,19 +117,18 @@
                 }
                 console.log(arrPlayerNum);
                 console.log(winnerNum);
+                endGame();//ho la quantità di numeri indovinati e quali
             };
 
             function endGame() {
                 alert('Hai indovinato ' + winnerNum.length + ' numeri! (' + winnerNum + ')');
             };
-
-            setTimeout(playerNumbers, 3000); //inserisco i numeri. quelli contenuti anche in arrRnd vanno anche in winnerNum
-
-            setTimeout(endGame, 5000); //ho la quantità di numeri indovinati e quali 
+            
+            setTimeout(playerNumbers, 3000); //inserisco i numeri. quelli contenuti anche in arrRnd vanno anche in winnerNum  
 
         }
 
-        //esercizio();
+        esercizio();
 
     </script>
 
